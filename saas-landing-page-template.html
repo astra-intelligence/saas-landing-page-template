@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlowForge — Modern SaaS Landing Page Template</title>
+<style>
+  /* ============================================
+     FlowForge — Premium SaaS Landing Template
+     Complete with dark mode, animations, responsive
+     ============================================ */
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #12121a;
+    --bg-elevated: #1a1a2e;
+    --border: #2a2a3e;
+    --text: #e8e8f0;
+    --text-secondary: #8888a8;
+    --accent: #6c5ce7;
+    --accent-light: #a29bfe;
+    --accent-glow: rgba(108,92,231,0.15);
+    --success: #00cec9;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --container: 1200px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .container {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; }
+  .logo span { color: var(--accent-light); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 24px; border-radius: var(--radius);
+    font-weight: 600; font-size: 0.9rem; cursor: pointer;
+    text-decoration: none; border: none; transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent); color: white;
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+  .btn-primary:hover { background: #5a4bd1; transform: translateY(-1px); box-shadow: 0 0 30px var(--accent-glow); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute;
+    top: 50%; left: 50%; width: 800px; height: 800px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 16px; border-radius: 100px;
+    background: var(--accent-glow); border: 1px solid rgba(108,92,231,0.3);
+    font-size: 0.85rem; color: var(--accent-light);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--success) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; position: relative; }
+  .hero-actions .btn { padding: 14px 32px; font-size: 1rem; }
+
+  /* ===== FEATURES ===== */
+  .features {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+  }
+  .section-label {
+    text-transform: uppercase; letter-spacing: 0.1em;
+    font-size: 0.8rem; color: var(--accent-light); font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .section-subtitle {
+    color: var(--text-secondary);
+    max-width: 500px;
+    font-size: 1.05rem;
+    margin-bottom: 56px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .feature-card {
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .feature-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  .feature-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px; background: var(--accent-glow);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 20px;
+  }
+  .feature-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+  .feature-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
+
+  /* ===== PRICING ===== */
+  .pricing {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .pricing-card {
+    padding: 40px 32px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    text-align: left;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, var(--bg-card) 0%, #1a1a3e 100%);
+    box-shadow: 0 0 40px var(--accent-glow);
+  }
+  .pricing-card.featured::before {
+    content: 'Popular'; position: absolute; top: -12px; left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 16px; border-radius: 100px;
+    background: var(--accent); color: white;
+    font-size: 0.8rem; font-weight: 600;
+  }
+  .pricing-card .price {
+    font-size: 2.5rem; font-weight: 800;
+    margin: 16px 0 8px;
+  }
+  .pricing-card .price span { font-size: 1rem; font-weight: 400; color: var(--text-secondary); }
+  .pricing-card .description { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 24px; }
+  .pricing-card ul { list-style: none; margin-bottom: 32px; }
+  .pricing-card ul li {
+    padding: 8px 0; font-size: 0.9rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pricing-card ul li::before { content: '✓'; color: var(--success); font-weight: 700; }
+  .pricing-card .btn { width: 100%; justify-content: center; }
+
+  /* ===== FAQ ===== */
+  .faq {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+  }
+  .faq-grid {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .faq-question {
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; font-weight: 600; font-size: 1.05rem;
+  }
+  .faq-question::after {
+    content: '+'; font-size: 1.5rem; color: var(--text-secondary);
+    transition: transform 0.2s;
+  }
+  .faq-item.open .faq-question::after { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--text-secondary); font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding-top: 16px;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: ''; position: absolute;
+    bottom: -200px; left: 50%; width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 16px; }
+  .cta p { color: var(--text-secondary); max-width: 500px; margin: 0 auto 40px; font-size: 1.1rem; position: relative; }
+  .cta .btn { padding: 16px 40px; font-size: 1.05rem; position: relative; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent-light); text-decoration: none; }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .nav-links a:not(.btn) { display: none; }
+    .hero { padding: 120px 0 60px; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo">Flow<span>Forge</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">&#9889; Now in Public Beta</div>
+    <h1>Build Products<br>People <span class="gradient">Actually Love</span></h1>
+    <p>FlowForge helps you ship faster with pre-built components, analytics, and user feedback loops — so you can focus on what matters.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn btn-primary">Start Free Trial</a>
+      <a href="#features" class="btn btn-outline">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="features">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <h2 class="section-title fade-in">Everything you need to ship</h2>
+    <p class="section-subtitle fade-in">Pre-built, production-ready components that save you weeks of development time.</p>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon">&#9889;</div>
+        <h3>Lightning Fast Prototyping</h3>
+        <p>Go from idea to working prototype in hours, not weeks. Pre-built UI components and API integrations included.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">&#128200;</div>
+        <h3>Built-in Analytics</h3>
+        <p>Understand user behavior from day one. Track retention, conversion, and engagement without extra setup.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">&#128640;</div>
+        <h3>One-Click Deploy</h3>
+        <p>Deploy to production with a single command. Automatic SSL, CDN, and scaling built right in.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">&#128274;</div>
+        <h3>Enterprise Security</h3>
+        <p>SOC 2 compliant, end-to-end encrypted, with role-based access control from day one.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">&#128101;</div>
+        <h3>Team Collaboration</h3>
+        <p>Real-time editing, comments, and version history. Your whole team stays in sync.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">&#128200;</div>
+        <h3>API-first Architecture</h3>
+        <p>Every feature is accessible via REST API. Build integrations, custom dashboards, and workflows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title fade-in">Simple, transparent pricing</h2>
+    <p class="section-subtitle fade-in" style="margin: 0 auto 56px;">No hidden fees. No surprises. Upgrade or cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in">
+        <h3>Starter</h3>
+        <div class="price">$19 <span>/mo</span></div>
+        <p class="description">Perfect for solo founders and side projects.</p>
+        <ul>
+          <li>Up to 1,000 users</li>
+          <li>5 projects</li>
+          <li>Basic analytics</li>
+          <li>Community support</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Get Started</a>
+      </div>
+      <div class="pricing-card featured fade-in">
+        <h3>Growth</h3>
+        <div class="price">$49 <span>/mo</span></div>
+        <p class="description">For growing teams ready to scale.</p>
+        <ul>
+          <li>Unlimited users</li>
+          <li>Unlimited projects</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+          <li>API access</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Get Started</a>
+      </div>
+      <div class="pricing-card fade-in">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <p class="description">For organizations with unique needs.</p>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Custom integrations</li>
+          <li>Dedicated support</li>
+          <li>SLA guarantee</li>
+          <li>On-premise option</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title fade-in" style="margin-bottom: 40px;">Frequently asked questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item fade-in">
+        <div class="faq-question">How does the free trial work?</div>
+        <div class="faq-answer">Start your 14-day free trial with no credit card required. You get full access to all Growth features. If you don't love it, cancel anytime with one click.</div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-question">Can I change my plan later?</div>
+        <div class="faq-answer">Absolutely. You can upgrade or downgrade at any time. Changes take effect immediately, and we'll prorate your billing.</div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-question">What payment methods do you accept?</div>
+        <div class="faq-answer">We accept all major credit cards, PayPal, and wire transfers for Enterprise plans. All payments are processed securely.</div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-question">Is there a setup fee?</div>
+        <div class="faq-answer">No setup fees, no hidden costs. The price you see is the price you pay. Enterprise plans are custom-priced based on your needs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta" class="cta">
+  <div class="container">
+    <h2 class="fade-in">Ready to ship faster?</h2>
+    <p class="fade-in">Join thousands of teams already building with FlowForge. Start your free trial today.</p>
+    <a href="#" class="btn btn-primary fade-in">Start Free Trial &rarr;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 FlowForge. Built with &#9829; for makers.</p>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for scroll animations
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+});
+</script>
+</body>
+</html>
